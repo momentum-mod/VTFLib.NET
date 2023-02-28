@@ -1,0 +1,280 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlTypes;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VTFLib
+{
+	[StructLayout(LayoutKind.Sequential)]
+	public struct SVTFImageFormatInfo
+	{
+		string name;					//!< Enumeration text equivalent.
+		uint bitsPerPixel;			//!< Format bits per pixel.
+		uint bytesPerPixel;			//!< Format bytes per pixel.
+		uint redBitsPerPixel;		//!< Format red bits per pixel.  0 for N/A.
+		uint greenBitsPerPixel;		//!< Format green bits per pixel.  0 for N/A.
+		uint blueBitsPerPixel;		//!< Format blue bits per pixel.  0 for N/A.
+		uint alphaBitsPerPixel;		//!< Format alpha bits per pixel.  0 for N/A.
+		bool isCompressed;			//!< Format is compressed (DXT).
+		bool isSupported;			//!< Format is supported by VTFLib.
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
+	public struct SVTFCreateOptions
+	{
+		uint versionMajor;                  // Output image version.
+		uint versionMinor;					// Output image version.
+		VTFImageFormat imageFormat;			// Output image output storage format.
+
+		uint flags;							// Output image header flags.
+		uint startFrame;					// Output image start frame.
+		float bumpScale;					// Output image bump scale.
+		float reflectivityR;				// Output image reflectivity. (Only used if bReflectivity is false.)
+		float reflectivityG;				// Output image reflectivity. (Only used if bReflectivity is false.)
+		float reflectivityB;				// Output image reflectivity. (Only used if bReflectivity is false.)
+
+		bool mipmaps;						// Generate MIPmaps. (Space is always allocated.)
+		VTFMipmapFilter mipmapFilter;		// MIP map re-size filter.
+
+		bool thumbnail;						// Generate thumbnail image.
+		bool reflectivity;					// Compute image reflectivity.
+
+		bool resize;						// Resize the input image.
+		VTFResizeMethod resizeMethod;		// New size compution method.
+		VTFMipmapFilter resizeFilter;		// Re-size filter.
+		uint resizeWidth;					// New width after re-size if method is RESIZE_SET.
+		uint resizeHeight;					// New height after re-size if method is RESIZE_SET.
+
+		bool resizeClamp;					// Clamp re-size size.
+		uint resizeClampWidth;				// Maximum width to re-size to.
+		uint resizeClampHeight;				// Maximum height to re-size to.
+
+		bool gammaCorrection;				// Gamma correct input image.
+		float gammaCorrectionAmount;		// Gamma correction to apply.
+
+		bool sphereMap;						// Generate a sphere map for six faced environment maps.
+		bool srgb;							// Texture is in the SRGB color space.
+	}
+
+	public class VTFFile
+	{
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageIsBound();
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlBindImage(uint image);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlCreateImage(ref uint image);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlDeleteImage(uint image);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageCreateDefaultCreateStructure(ref SVTFCreateOptions vtfCreateOptions);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageCreate(uint width, uint height, uint frames, uint faces, uint slices, VTFImageFormat imageFormat, bool thumbnail, bool mipMaps, bool nullImageData);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageCreateSingle(uint width, uint height, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageCreateMultiple(uint width, uint height, uint frames, uint faces, uint slices, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageDestroy();
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageIsLoaded();
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageLoad(string fileName, bool headerOnly);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageLoadLump(byte[] data, uint bufferSize, bool headerOnly);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageLoadProc(byte[] userData, bool headerOnly);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageSave(string fileName);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageSaveLump(byte[] data, uint bufferSize, ref uint size);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageSaveProc(byte[] userData);
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetHasImage();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetMajorVersion();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetMinorVersion();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetSize();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetWidth();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetHeight();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetDepth();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetFrameCount();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetFaceCount();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetMipmapCount();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetStartFrame();
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetStartFrame(uint startFrame);
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetFlags();
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetFlags(uint flags);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGetFlag(VTFImageFlag flag);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetFlag(VTFImageFlag flag, bool value);
+
+		[DllImport("VTFLib.dll")]
+		public static extern float vlImageGetBumpmapScale();
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetBumpmapScale(float bumpmapScale);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageGetReflectivity(ref float x, ref float y, ref float z);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetReflectivity(float x, float y, float z);
+
+		[DllImport("VTFLib.dll")]
+		public static extern VTFImageFormat vlImageGetFormat();
+
+		[DllImport("VTFLib.dll")]
+		public static extern byte[] vlImageGetData(uint frame, uint face, uint slice, uint mipmapLevel);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetData(uint frame, uint face, uint slice, uint mipmapLevel, byte[] data);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGetHasThumbnail();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetThumbnailWidth();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetThumbnailHeight();
+
+		[DllImport("VTFLib.dll")]
+		public static extern VTFImageFormat vlImageGetThumbnailFormat();
+
+		[DllImport("VTFLib.dll")]
+		public static extern byte[] vlImageGetThumbnailData();
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageSetThumbnailData(byte[] data);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGetSupportsResources();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetResourceCount();
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageGetResourceType(uint index);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGetHasResource(uint type);
+
+		[DllImport("VTFLib.dll")]
+		public static extern byte[] vlImageGetResourceData(uint type, ref uint size);
+
+		[DllImport("VTFLib.dll")]
+		public static extern byte[] vlImageSetResourceData(uint type, uint size, byte[] data);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateMipmaps(uint face, uint frame, VTFMipmapFilter mipmapFilter, bool srgb);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateAllMipmaps(VTFMipmapFilter mipmapFilter, bool srgb);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateThumbnail(bool srgb);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateNormalMap(uint frame, VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateAllNormalMaps(VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGenerateSphereMap();
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageComputeReflectivity();
+
+		[DllImport("VTFLib.dll")]
+		public static extern ref SVTFImageFormatInfo vlImageGetFormatInfo(VTFImageFormat format);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageGetImageFormatInfoEx(VTFImageFormat format, ref SVTFImageFormatInfo info);
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageComputeImageSize(uint width, uint height, uint depth, uint mipmapCount, VTFImageFormat format);
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageComputeMipmapCount(uint width, uint height, uint depth);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageComputeMipmapDimensions(uint width, uint height, uint depth, uint mipmapLevel, ref uint mipmapWidth, ref uint mipmapHeight, ref uint mipmapDepth);
+
+		[DllImport("VTFLib.dll")]
+		public static extern uint vlImageComputeMipmapSize(uint width, uint height, uint depth, uint mipmapLevel, VTFImageFormat format);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageConvertToRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageConvertFromRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat destFormat);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageConvert(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat, VTFImageFormat destFormat);
+
+		[DllImport("VTFLib.dll")]
+		public static extern bool vlImageResize(byte[] sourceRGBA8888, byte[] destRGBA8888, uint sourceWidth, uint sourceHeight, uint destWidth, uint destHeight, VTFMipmapFilter resizeFilter, bool srgb);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageCorrectImageGamma(byte[] imageRGBA8888, uint width, uint height, float gammaCorrection);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageComputeImageReflectivity(byte[] imageRGBA8888, uint width, uint height, ref float x, ref float y, ref float z);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageFlipImage(byte[] imageRGBA8888, uint width, uint height);
+
+		[DllImport("VTFLib.dll")]
+		public static extern void vlImageMirrorImage(byte[] imageRGBA8888, uint width, uint height);
+	}
+}
