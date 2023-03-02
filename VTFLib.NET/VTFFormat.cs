@@ -14,60 +14,60 @@ namespace VTFLib
 	*/
 	public enum VTFImageFormat
 	{
-		IMAGE_FORMAT_RGBA8888 = 0,              //!<  = Red, Green, Blue, Alpha - 32 bpp
-		IMAGE_FORMAT_ABGR8888,                  //!<  = Alpha, Blue, Green, Red - 32 bpp
-		IMAGE_FORMAT_RGB888,                    //!<  = Red, Green, Blue - 24 bpp
-		IMAGE_FORMAT_BGR888,                    //!<  = Blue, Green, Red - 24 bpp
-		IMAGE_FORMAT_RGB565,                    //!<  = Red, Green, Blue - 16 bpp
-		IMAGE_FORMAT_I8,                        //!<  = Luminance - 8 bpp
-		IMAGE_FORMAT_IA88,                      //!<  = Luminance, Alpha - 16 bpp
-		IMAGE_FORMAT_P8,                        //!<  = Paletted - 8 bpp
-		IMAGE_FORMAT_A8,                        //!<  = Alpha- 8 bpp
-		IMAGE_FORMAT_RGB888_BLUESCREEN,         //!<  = Red, Green, Blue, "BlueScreen" Alpha - 24 bpp
-		IMAGE_FORMAT_BGR888_BLUESCREEN,         //!<  = Red, Green, Blue, "BlueScreen" Alpha - 24 bpp
-		IMAGE_FORMAT_ARGB8888,                  //!<  = Alpha, Red, Green, Blue - 32 bpp
-		IMAGE_FORMAT_BGRA8888,                  //!<  = Blue, Green, Red, Alpha - 32 bpp
-		IMAGE_FORMAT_DXT1,                      //!<  = DXT1 compressed format - 4 bpp
-		IMAGE_FORMAT_DXT3,                      //!<  = DXT3 compressed format - 8 bpp
-		IMAGE_FORMAT_DXT5,                      //!<  = DXT5 compressed format - 8 bpp
-		IMAGE_FORMAT_BGRX8888,                  //!<  = Blue, Green, Red, Unused - 32 bpp
-		IMAGE_FORMAT_BGR565,                    //!<  = Blue, Green, Red - 16 bpp
-		IMAGE_FORMAT_BGRX5551,                  //!<  = Blue, Green, Red, Unused - 16 bpp
-		IMAGE_FORMAT_BGRA4444,                  //!<  = Red, Green, Blue, Alpha - 16 bpp
-		IMAGE_FORMAT_DXT1_ONEBITALPHA,          //!<  = DXT1 compressed format with 1-bit alpha - 4 bpp
-		IMAGE_FORMAT_BGRA5551,                  //!<  = Blue, Green, Red, Alpha - 16 bpp
-		IMAGE_FORMAT_UV88,                      //!<  = 2 channel format for DuDv/Normal maps - 16 bpp
-		IMAGE_FORMAT_UVWQ8888,                  //!<  = 4 channel format for DuDv/Normal maps - 32 bpp
-		IMAGE_FORMAT_RGBA16161616F,             //!<  = Red, Green, Blue, Alpha - 64 bpp
-		IMAGE_FORMAT_RGBA16161616,              //!<  = Red, Green, Blue, Alpha signed with mantissa - 64 bpp
-		IMAGE_FORMAT_UVLX8888,                  //!<  = 4 channel format for DuDv/Normal maps - 32 bpp
-		IMAGE_FORMAT_R32F,                      //!<  = Luminance - 32 bpp
-		IMAGE_FORMAT_RGB323232F,                //!<  = Red, Green, Blue - 96 bpp
-		IMAGE_FORMAT_RGBA32323232F,             //!<  = Red, Green, Blue, Alpha - 128 bpp
+		IMAGE_FORMAT_RGBA8888 = 0,              // Red, Green, Blue, Alpha - 32 bpp
+		IMAGE_FORMAT_ABGR8888,                  // Alpha, Blue, Green, Red - 32 bpp
+		IMAGE_FORMAT_RGB888,                    // Red, Green, Blue - 24 bpp
+		IMAGE_FORMAT_BGR888,                    // Blue, Green, Red - 24 bpp
+		IMAGE_FORMAT_RGB565,                    // Red, Green, Blue - 16 bpp
+		IMAGE_FORMAT_I8,                        // Luminance - 8 bpp
+		IMAGE_FORMAT_IA88,                      // Luminance, Alpha - 16 bpp
+		IMAGE_FORMAT_P8,                        // Paletted - 8 bpp
+		IMAGE_FORMAT_A8,                        // Alpha- 8 bpp
+		IMAGE_FORMAT_RGB888_BLUESCREEN,         // Red, Green, Blue, "BlueScreen" Alpha - 24 bpp
+		IMAGE_FORMAT_BGR888_BLUESCREEN,         // Red, Green, Blue, "BlueScreen" Alpha - 24 bpp
+		IMAGE_FORMAT_ARGB8888,                  // Alpha, Red, Green, Blue - 32 bpp
+		IMAGE_FORMAT_BGRA8888,                  // Blue, Green, Red, Alpha - 32 bpp
+		IMAGE_FORMAT_DXT1,                      // DXT1 compressed format - 4 bpp
+		IMAGE_FORMAT_DXT3,                      // DXT3 compressed format - 8 bpp
+		IMAGE_FORMAT_DXT5,                      // DXT5 compressed format - 8 bpp
+		IMAGE_FORMAT_BGRX8888,                  // Blue, Green, Red, Unused - 32 bpp
+		IMAGE_FORMAT_BGR565,                    // Blue, Green, Red - 16 bpp
+		IMAGE_FORMAT_BGRX5551,                  // Blue, Green, Red, Unused - 16 bpp
+		IMAGE_FORMAT_BGRA4444,                  // Red, Green, Blue, Alpha - 16 bpp
+		IMAGE_FORMAT_DXT1_ONEBITALPHA,          // DXT1 compressed format with 1-bit alpha - 4 bpp
+		IMAGE_FORMAT_BGRA5551,                  // Blue, Green, Red, Alpha - 16 bpp
+		IMAGE_FORMAT_UV88,                      // 2 channel format for DuDv/Normal maps - 16 bpp
+		IMAGE_FORMAT_UVWQ8888,                  // 4 channel format for DuDv/Normal maps - 32 bpp
+		IMAGE_FORMAT_RGBA16161616F,             // Red, Green, Blue, Alpha - 64 bpp
+		IMAGE_FORMAT_RGBA16161616,              // Red, Green, Blue, Alpha signed with mantissa - 64 bpp
+		IMAGE_FORMAT_UVLX8888,                  // 4 channel format for DuDv/Normal maps - 32 bpp
+		IMAGE_FORMAT_R32F,                      // Luminance - 32 bpp
+		IMAGE_FORMAT_RGB323232F,                // Red, Green, Blue - 96 bpp
+		IMAGE_FORMAT_RGBA32323232F,             // Red, Green, Blue, Alpha - 128 bpp
 
-		IMAGE_FORMAT_NV_NULL = 33,              //!<  = 0 bpp
+		IMAGE_FORMAT_NV_NULL = 33,              // 0 bpp
 
-		IMAGE_FORMAT_ATI2N,                     //!<  = Red, Green BC5 compressed format - 8 bpp
-		IMAGE_FORMAT_ATI1N,                     //!<  = Red BC4 compressed format - 4 bpp
+		IMAGE_FORMAT_ATI2N,                     // Red, Green BC5 compressed format - 8 bpp
+		IMAGE_FORMAT_ATI1N,                     // Red BC4 compressed format - 4 bpp
 
-		IMAGE_FORMAT_BC7 = 70,                  //!<  = Red, Green, Blue, Alpha BC7 compressed format - 8 bpp
+		IMAGE_FORMAT_BC7 = 70,                  // Red, Green, Blue, Alpha BC7 compressed format - 8 bpp
 		/*
 		XBox:
 		IMAGE_FORMAT_X360_DST16,
 		IMAGE_FORMAT_X360_DST24,
 		IMAGE_FORMAT_X360_DST24F,
-		IMAGE_FORMAT_LINEAR_BGRX8888,			//!<  = Blue, Green, Red, Unused - 32 bpp		
-		IMAGE_FORMAT_LINEAR_RGBA8888,			//!<  = Red, Green, Blue, Alpha - 32 bpp
-		IMAGE_FORMAT_LINEAR_ABGR8888,			//!<  = Alpha, Blue, Green, Red - 32 bpp
-		IMAGE_FORMAT_LINEAR_ARGB8888,			//!<  = Alpha, Red, Green, Blue - 32 bpp
-		IMAGE_FORMAT_LINEAR_BGRA8888,			//!<  = Blue, Green, Red, Alpha - 32 bpp
-		IMAGE_FORMAT_LINEAR_RGB888,				//!<  = Red, Green, Blue - 24 bpp
-		IMAGE_FORMAT_LINEAR_BGR888,				//!<  = Blue, Green, Red - 24 bpp
-		IMAGE_FORMAT_LINEAR_BGRX5551,			//!<  = Blue, Green, Red, Unused - 16 bpp
-		IMAGE_FORMAT_LINEAR_I8,					//!<  = Luminance - 8 bpp
-		IMAGE_FORMAT_LINEAR_RGBA16161616,		//!<  = Red, Green, Blue, Alpha signed with mantissa - 64 bpp
-		IMAGE_FORMAT_LE_BGRX8888,				//!<  = Blue, Green, Red, Unused - 32 bpp
-		IMAGE_FORMAT_LE_BGRA8888,				//!<  = Blue, Green, Red, Alpha - 32 bpp
+		IMAGE_FORMAT_LINEAR_BGRX8888,			// Blue, Green, Red, Unused - 32 bpp		
+		IMAGE_FORMAT_LINEAR_RGBA8888,			// Red, Green, Blue, Alpha - 32 bpp
+		IMAGE_FORMAT_LINEAR_ABGR8888,			// Alpha, Blue, Green, Red - 32 bpp
+		IMAGE_FORMAT_LINEAR_ARGB8888,			// Alpha, Red, Green, Blue - 32 bpp
+		IMAGE_FORMAT_LINEAR_BGRA8888,			// Blue, Green, Red, Alpha - 32 bpp
+		IMAGE_FORMAT_LINEAR_RGB888,				// Red, Green, Blue - 24 bpp
+		IMAGE_FORMAT_LINEAR_BGR888,				// Blue, Green, Red - 24 bpp
+		IMAGE_FORMAT_LINEAR_BGRX5551,			// Blue, Green, Red, Unused - 16 bpp
+		IMAGE_FORMAT_LINEAR_I8,					// Luminance - 8 bpp
+		IMAGE_FORMAT_LINEAR_RGBA16161616,		// Red, Green, Blue, Alpha signed with mantissa - 64 bpp
+		IMAGE_FORMAT_LE_BGRX8888,				// Blue, Green, Red, Unused - 32 bpp
+		IMAGE_FORMAT_LE_BGRA8888,				// Blue, Green, Red, Alpha - 32 bpp
 		*/
 		IMAGE_FORMAT_COUNT,
 		IMAGE_FORMAT_NONE = -1
@@ -89,28 +89,28 @@ namespace VTFLib
 		TEXTUREFLAGS_NOLOD										= 0x00000200,
 		TEXTUREFLAGS_MINMIP										= 0x00000400,
 		TEXTUREFLAGS_PROCEDURAL									= 0x00000800,
-		TEXTUREFLAGS_ONEBITALPHA								= 0x00001000, //!< Automatically generated by VTex.
-		TEXTUREFLAGS_EIGHTBITALPHA								= 0x00002000, //!< Automatically generated by VTex.
+		TEXTUREFLAGS_ONEBITALPHA								= 0x00001000, // Automatically generated by VTex.
+		TEXTUREFLAGS_EIGHTBITALPHA								= 0x00002000, // Automatically generated by VTex.
 		TEXTUREFLAGS_ENVMAP										= 0x00004000,
 		TEXTUREFLAGS_RENDERTARGET								= 0x00008000,
 		TEXTUREFLAGS_DEPTHRENDERTARGET							= 0x00010000,
 		TEXTUREFLAGS_NODEBUGOVERRIDE							= 0x00020000,
 		TEXTUREFLAGS_SINGLECOPY									= 0x00040000,
-		TEXTUREFLAGS_UNUSED0									= 0x00080000, //!< Originally internal to VTex as TEXTUREFLAGS_ONEOVERMIPLEVELINALPHA.
+		TEXTUREFLAGS_UNUSED0									= 0x00080000, // Originally internal to VTex as TEXTUREFLAGS_ONEOVERMIPLEVELINALPHA.
 		TEXTUREFLAGS_DEPRECATED_ONEOVERMIPLEVELINALPHA			= 0x00080000,
-		TEXTUREFLAGS_UNUSED1									= 0x00100000, //!< Originally internal to VTex as TEXTUREFLAGS_PREMULTCOLORBYONEOVERMIPLEVEL.
+		TEXTUREFLAGS_UNUSED1									= 0x00100000, // Originally internal to VTex as TEXTUREFLAGS_PREMULTCOLORBYONEOVERMIPLEVEL.
 		TEXTUREFLAGS_DEPRECATED_PREMULTCOLORBYONEOVERMIPLEVEL	= 0x00100000,
-		TEXTUREFLAGS_UNUSED2									= 0x00200000, //!< Originally internal to VTex as TEXTUREFLAGS_NORMALTODUDV.
+		TEXTUREFLAGS_UNUSED2									= 0x00200000, // Originally internal to VTex as TEXTUREFLAGS_NORMALTODUDV.
 		TEXTUREFLAGS_DEPRECATED_NORMALTODUDV					= 0x00200000,
-		TEXTUREFLAGS_UNUSED3									= 0x00400000, //!< Originally internal to VTex as TEXTUREFLAGS_ALPHATESTMIPGENERATION.
+		TEXTUREFLAGS_UNUSED3									= 0x00400000, // Originally internal to VTex as TEXTUREFLAGS_ALPHATESTMIPGENERATION.
 		TEXTUREFLAGS_DEPRECATED_ALPHATESTMIPGENERATION			= 0x00400000,
 		TEXTUREFLAGS_NODEPTHBUFFER								= 0x00800000,
-		TEXTUREFLAGS_UNUSED4									= 0x01000000, //!< Originally internal to VTex as TEXTUREFLAGS_NICEFILTERED.
+		TEXTUREFLAGS_UNUSED4									= 0x01000000, // Originally internal to VTex as TEXTUREFLAGS_NICEFILTERED.
 		TEXTUREFLAGS_DEPRECATED_NICEFILTERED					= 0x01000000,
 		TEXTUREFLAGS_CLAMPU										= 0x02000000,
 		TEXTUREFLAGS_VERTEXTEXTURE								= 0x04000000,
 		TEXTUREFLAGS_SSBUMP										= 0x08000000,
-		TEXTUREFLAGS_UNUSED5									= 0x10000000, //!< Originally TEXTUREFLAGS_UNFILTERABLE_OK.
+		TEXTUREFLAGS_UNUSED5									= 0x10000000, // Originally TEXTUREFLAGS_UNFILTERABLE_OK.
 		TEXTUREFLAGS_DEPRECATED_UNFILTERABLE_OK					= 0x10000000,
 		TEXTUREFLAGS_BORDER										= 0x20000000,
 		TEXTUREFLAGS_DEPRECATED_SPECVAR_RED						= 0x40000000,
@@ -150,6 +150,40 @@ namespace VTFLib
 		MIPMAP_FILTER_BLACKMAN,
 		MIPMAP_FILTER_KAISER,
 		MIPMAP_FILTER_COUNT
+	}
+
+	// MIP map sharpen filter indices.
+	public enum VTFSharpenFilter
+	{
+		SHARPEN_FILTER_NONE = 0,
+		SHARPEN_FILTER_NEGATIVE,
+		SHARPEN_FILTER_LIGHTER,
+		SHARPEN_FILTER_DARKER,
+		SHARPEN_FILTER_CONTRASTMORE,
+		SHARPEN_FILTER_CONTRASTLESS,
+		SHARPEN_FILTER_SMOOTHEN,
+		SHARPEN_FILTER_SHARPENSOFT,
+		SHARPEN_FILTER_SHARPENMEDIUM,
+		SHARPEN_FILTER_SHARPENSTRONG,
+		SHARPEN_FILTER_FINDEDGES,
+		SHARPEN_FILTER_CONTOUR,
+		SHARPEN_FILTER_EDGEDETECT,
+		SHARPEN_FILTER_EDGEDETECTSOFT,
+		SHARPEN_FILTER_EMBOSS,
+		SHARPEN_FILTER_MEANREMOVAL,
+		SHARPEN_FILTER_UNSHARP,
+		SHARPEN_FILTER_XSHARPEN,
+		SHARPEN_FILTER_WARPSHARP,
+		SHARPEN_FILTER_COUNT
+	}
+
+	public enum VTFDXTQuality
+	{
+		DXT_QUALITY_LOW,
+		DXT_QUALITY_MEDIUM,
+		DXT_QUALITY_HIGH,
+		DXT_QUALITY_HIGHEST,
+		DXT_QUALITY_COUNT
 	}
 
 	// Normal map creation kernel size indices.

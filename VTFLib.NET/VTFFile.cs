@@ -8,55 +8,81 @@ using System.Threading.Tasks;
 
 namespace VTFLib
 {
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	public struct SVTFImageFormatInfo
 	{
-		string name;					//!< Enumeration text equivalent.
-		uint bitsPerPixel;			//!< Format bits per pixel.
-		uint bytesPerPixel;			//!< Format bytes per pixel.
-		uint redBitsPerPixel;		//!< Format red bits per pixel.  0 for N/A.
-		uint greenBitsPerPixel;		//!< Format green bits per pixel.  0 for N/A.
-		uint blueBitsPerPixel;		//!< Format blue bits per pixel.  0 for N/A.
-		uint alphaBitsPerPixel;		//!< Format alpha bits per pixel.  0 for N/A.
-		bool isCompressed;			//!< Format is compressed (DXT).
-		bool isSupported;			//!< Format is supported by VTFLib.
+		string name;					// Enumeration text equivalent.
+		uint bitsPerPixel;				// Format bits per pixel.
+		uint bytesPerPixel;				// Format bytes per pixel.
+		uint redBitsPerPixel;			// Format red bits per pixel.  0 for N/A.
+		uint greenBitsPerPixel;			// Format green bits per pixel.  0 for N/A.
+		uint blueBitsPerPixel;			// Format blue bits per pixel.  0 for N/A.
+		uint alphaBitsPerPixel;			// Format alpha bits per pixel.  0 for N/A.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool isCompressed;		// Format is compressed (DXT).
+		[MarshalAs(UnmanagedType.I1)]
+		public bool isSupported;		// Format is supported by VTFLib.
 	}
 
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	public struct SVTFCreateOptions
 	{
-		uint versionMajor;                  // Output image version.
-		uint versionMinor;					// Output image version.
-		VTFImageFormat imageFormat;			// Output image output storage format.
+		public uint versionMajor;									// Output image version.
+		public uint versionMinor;									// Output image version.
+		public VTFImageFormat imageFormat;							// Output image output storage format.
 
-		uint flags;							// Output image header flags.
-		uint startFrame;					// Output image start frame.
-		float bumpScale;					// Output image bump scale.
-		float reflectivityR;				// Output image reflectivity. (Only used if bReflectivity is false.)
-		float reflectivityG;				// Output image reflectivity. (Only used if bReflectivity is false.)
-		float reflectivityB;				// Output image reflectivity. (Only used if bReflectivity is false.)
+		public uint flags;											// Output image header flags.
+		public uint startFrame;										// Output image start frame.
+		public float bumpScale;										// Output image bump scale.
+		public float reflectivityR;									// Output image reflectivity. (Only used if bReflectivity is false.)
+		public float reflectivityG;									// Output image reflectivity. (Only used if bReflectivity is false.)
+		public float reflectivityB;									// Output image reflectivity. (Only used if bReflectivity is false.)
 
-		bool mipmaps;						// Generate MIPmaps. (Space is always allocated.)
-		VTFMipmapFilter mipmapFilter;		// MIP map re-size filter.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool mipmaps;										// Generate MIPmaps. (Space is always allocated.)
+		public VTFMipmapFilter mipmapFilter;						// MIP map re-size filter.
+		public VTFSharpenFilter mipmapSharpenFilter;				// MIP map sharpen filter.
 
-		bool thumbnail;						// Generate thumbnail image.
-		bool reflectivity;					// Compute image reflectivity.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool thumbnail;										// Generate thumbnail image.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool reflectivity;									// Compute image reflectivity.
 
-		bool resize;						// Resize the input image.
-		VTFResizeMethod resizeMethod;		// New size compution method.
-		VTFMipmapFilter resizeFilter;		// Re-size filter.
-		uint resizeWidth;					// New width after re-size if method is RESIZE_SET.
-		uint resizeHeight;					// New height after re-size if method is RESIZE_SET.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool resize;											// Resize the input image.
+		public VTFResizeMethod resizeMethod;						// New size compution method.
+		public VTFMipmapFilter resizeFilter;						// Re-size filter.
+		public VTFSharpenFilter resizeSharpenFilter;				// Sharpen filter.
+		public uint resizeWidth;									// New width after re-size if method is RESIZE_SET.
+		public uint resizeHeight;									// New height after re-size if method is RESIZE_SET.
 
-		bool resizeClamp;					// Clamp re-size size.
-		uint resizeClampWidth;				// Maximum width to re-size to.
-		uint resizeClampHeight;				// Maximum height to re-size to.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool resizeClamp;									// Clamp re-size size.
+		public uint resizeClampWidth;								// Maximum width to re-size to.
+		public uint resizeClampHeight;								// Maximum height to re-size to.
 
-		bool gammaCorrection;				// Gamma correct input image.
-		float gammaCorrectionAmount;		// Gamma correction to apply.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool gammaCorrectionEnabled;							// Gamma correct input image.
+		public float gammaCorrectionAmount;							// Gamma correction to apply.
 
-		bool sphereMap;						// Generate a sphere map for six faced environment maps.
-		bool srgb;							// Texture is in the SRGB color space.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool normalMap;										// Convert input image to a normal map.
+		public VTFKernelFilter kernelFilter;						// Normal map generation kernel.
+		public VTFHeightConversionMethod heightConversionMethod;	// Method or determining height from input image during normal map creation.
+		public VTFNormalAlphaResult normalAlphaResult;				// How to handle output image alpha channel, post normal map creation.
+		public byte normalMinimumZ;									// Minimum normal Z value.
+		public float normalScale;									// Normal map scale.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool normalWrap;										// Wrap the normal map.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool normalInvertX;									// Invert the normal X component.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool normalInvertY;									// Invert the normal Y component.
+		[MarshalAs(UnmanagedType.I1)]
+		public bool normalInvertZ;									// Invert the normal Z component.
+
+		[MarshalAs(UnmanagedType.I1)]
+		public bool sphereMap;										// Generate a sphere map for six faced environment maps.
 	}
 
 	public class VTFFile

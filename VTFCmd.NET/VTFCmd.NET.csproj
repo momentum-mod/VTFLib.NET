@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DevILSharp" Version="0.2.19" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VTFLib.NET\VTFLib.NET.csproj" />
   </ItemGroup>
 
