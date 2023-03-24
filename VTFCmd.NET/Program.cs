@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using VTFLib;
 
-VTFAPI.vlInitialize();
+VTFAPI.Initialize();
 IL.Init();
 
 PrintVTFInfo(@"C:\Users\tyler\Documents\Code\VTFLib.NET\VTFLib.NET.Test\checkerboard.vtf");
@@ -15,30 +15,30 @@ void PrintVTFInfo(string vtfPath)
 	Console.WriteLine($"Displaying info for {vtfPath}");
 
 	uint image = 0;
-	VTFFile.vlCreateImage(ref image);
-	VTFFile.vlBindImage(image);
+	VTFFile.CreateImage(ref image);
+	VTFFile.BindImage(image);
 
-	if (!VTFFile.vlImageLoad(vtfPath, false))
+	if (!VTFFile.ImageLoad(vtfPath, false))
 	{
 		Console.WriteLine($"Error loading VTF");
 		return;
 	}
 
-	Console.WriteLine($"Version: {VTFFile.vlImageGetMajorVersion()}.{VTFFile.vlImageGetMinorVersion()}");
-	Console.WriteLine($"Width: {VTFFile.vlImageGetWidth()}");
-	Console.WriteLine($"Height: {VTFFile.vlImageGetHeight()}");
-	Console.WriteLine($"Depth: {VTFFile.vlImageGetDepth()}");
-	Console.WriteLine($"Frames: {VTFFile.vlImageGetFrameCount()}");
-	Console.WriteLine($"Start Frame: {VTFFile.vlImageGetStartFrame()}");
-	Console.WriteLine($"Faces: {VTFFile.vlImageGetFaceCount()}");
-	Console.WriteLine($"Mipmaps: {VTFFile.vlImageGetMipmapCount()}");
-	Console.WriteLine($"Flags: {VTFFile.vlImageGetFlags()}");
-	Console.WriteLine($"Bumpmap Scale: {VTFFile.vlImageGetBumpmapScale()}");
+	Console.WriteLine($"Version: {VTFFile.ImageGetMajorVersion()}.{VTFFile.ImageGetMinorVersion()}");
+	Console.WriteLine($"Width: {VTFFile.ImageGetWidth()}");
+	Console.WriteLine($"Height: {VTFFile.ImageGetHeight()}");
+	Console.WriteLine($"Depth: {VTFFile.ImageGetDepth()}");
+	Console.WriteLine($"Frames: {VTFFile.ImageGetFrameCount()}");
+	Console.WriteLine($"Start Frame: {VTFFile.ImageGetStartFrame()}");
+	Console.WriteLine($"Faces: {VTFFile.ImageGetFaceCount()}");
+	Console.WriteLine($"Mipmaps: {VTFFile.ImageGetMipmapCount()}");
+	Console.WriteLine($"Flags: {VTFFile.ImageGetFlags()}");
+	Console.WriteLine($"Bumpmap Scale: {VTFFile.ImageGetBumpmapScale()}");
 	var reflectivity = new Vector3();
-	VTFFile.vlImageGetReflectivity(ref reflectivity.X, ref reflectivity.Y, ref reflectivity.Z);
+	VTFFile.ImageGetReflectivity(ref reflectivity.X, ref reflectivity.Y, ref reflectivity.Z);
 	Console.WriteLine($"Reflectivity: {reflectivity}");
-	//Console.WriteLine($"Format: {VTFFile.vlImageGetImageFormatInfo(VTFFile.vlImageGetFormat())}");
-	Console.WriteLine($"Resources: {VTFFile.vlImageGetResourceCount()}");
+	//Console.WriteLine($"Format: {VTFFile.ImageGetImageFormatInfo(VTFFile.ImageGetFormat())}");
+	Console.WriteLine($"Resources: {VTFFile.ImageGetResourceCount()}");
 
 	Console.WriteLine();
 }
@@ -68,7 +68,7 @@ void PrintImageInfo(string imagePath, string savePath)
 	Console.WriteLine($"BPP: {bpp}");
 
 	var createOptions = new SVTFCreateOptions();
-	VTFFile.vlImageCreateDefaultCreateStructure(ref createOptions);
+	VTFFile.ImageCreateDefaultCreateStructure(ref createOptions);
 	createOptions.imageFormat = IL.GetInteger(IntName.ImageBytesPerPixel) == 4 ? VTFImageFormat.IMAGE_FORMAT_DXT5 : VTFImageFormat.IMAGE_FORMAT_DXT1;
 
 	if (!IL.ConvertImage(ChannelFormat.RGBA, ChannelType.UnsignedByte))
@@ -81,13 +81,13 @@ void PrintImageInfo(string imagePath, string savePath)
 	var data = new byte[size];
 	Marshal.Copy(IL.GetData(), data, 0, size);
 
-	if (!VTFFile.vlImageCreateSingle((uint)width, (uint)height, data, ref createOptions))
+	if (!VTFFile.ImageCreateSingle((uint)width, (uint)height, data, ref createOptions))
 	{
 		Console.WriteLine($"Error creating VTF file");
 		return;
 	}
 
-	if (!VTFFile.vlImageSave(savePath))
+	if (!VTFFile.ImageSave(savePath))
 	{
 		Console.WriteLine($"Error saving VTF file");
 		return;

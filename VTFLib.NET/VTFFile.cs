@@ -85,222 +85,222 @@ namespace VTFLib
 		public bool sphereMap;										// Generate a sphere map for six faced environment maps.
 	}
 
-	public class VTFFile
+	public static class VTFFile
 	{
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageIsBound();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageIsBound")]
+		public static extern bool ImageIsBound();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlBindImage(uint image);
+		[DllImport("VTFLib.dll", EntryPoint = "vlBindImage")]
+		public static extern bool BindImage(uint image);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlCreateImage(ref uint image);
+		[DllImport("VTFLib.dll", EntryPoint = "vlCreateImage")]
+		public static extern bool CreateImage(ref uint image);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlDeleteImage(uint image);
+		[DllImport("VTFLib.dll", EntryPoint = "vlDeleteImage")]
+		public static extern void DeleteImage(uint image);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageCreateDefaultCreateStructure(ref SVTFCreateOptions vtfCreateOptions);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageCreateDefaultCreateStructure")]
+		public static extern void ImageCreateDefaultCreateStructure(ref SVTFCreateOptions vtfCreateOptions);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageCreate(uint width, uint height, uint frames, uint faces, uint slices, VTFImageFormat imageFormat, bool thumbnail, bool mipMaps, bool nullImageData);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageCreate")]
+		public static extern bool ImageCreate(uint width, uint height, uint frames, uint faces, uint slices, VTFImageFormat imageFormat, bool thumbnail, bool mipMaps, bool nullImageData);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageCreateSingle(uint width, uint height, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageCreateSingle")]
+		public static extern bool ImageCreateSingle(uint width, uint height, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageCreateMultiple(uint width, uint height, uint frames, uint faces, uint slices, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageCreateMultiple")]
+		public static extern bool ImageCreateMultiple(uint width, uint height, uint frames, uint faces, uint slices, byte[] imageDataRGBA8888, ref SVTFCreateOptions vtfCreateOptions);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageDestroy();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageDestroy")]
+		public static extern void ImageDestroy();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageIsLoaded();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageIsLoaded")]
+		public static extern bool ImageIsLoaded();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageLoad(string fileName, bool headerOnly);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageLoad")]
+		public static extern bool ImageLoad(string fileName, bool headerOnly);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageLoadLump(byte[] data, uint bufferSize, bool headerOnly);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageLoadLump")]
+		public static extern bool ImageLoadLump(byte[] data, uint bufferSize, bool headerOnly);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageLoadProc(byte[] userData, bool headerOnly);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageLoadProc")]
+		public static extern bool ImageLoadProc(byte[] userData, bool headerOnly);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageSave(string fileName);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSave")]
+		public static extern bool ImageSave(string fileName);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageSaveLump(byte[] data, uint bufferSize, ref uint size);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSaveLump")]
+		public static extern bool ImageSaveLump(byte[] data, uint bufferSize, ref uint size);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageSaveProc(byte[] userData);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSaveProc")]
+		public static extern bool ImageSaveProc(byte[] userData);
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetHasImage();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetHasImage")]
+		public static extern uint ImageGetHasImage();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetMajorVersion();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetMajorVersion")]
+		public static extern uint ImageGetMajorVersion();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetMinorVersion();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetMinorVersion")]
+		public static extern uint ImageGetMinorVersion();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetSize();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetSize")]
+		public static extern uint ImageGetSize();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetWidth();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetWidth")]
+		public static extern uint ImageGetWidth();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetHeight();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetHeight")]
+		public static extern uint ImageGetHeight();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetDepth();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetDepth")]
+		public static extern uint ImageGetDepth();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetFrameCount();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFrameCount")]
+		public static extern uint ImageGetFrameCount();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetFaceCount();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFaceCount")]
+		public static extern uint ImageGetFaceCount();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetMipmapCount();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetMipmapCount")]
+		public static extern uint ImageGetMipmapCount();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetStartFrame();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetStartFrame")]
+		public static extern uint ImageGetStartFrame();
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetStartFrame(uint startFrame);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetStartFrame")]
+		public static extern void ImageSetStartFrame(uint startFrame);
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetFlags();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFlags")]
+		public static extern uint ImageGetFlags();
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetFlags(uint flags);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetFlags")]
+		public static extern void ImageSetFlags(uint flags);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGetFlag(VTFImageFlag flag);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFlag")]
+		public static extern bool ImageGetFlag(VTFImageFlag flag);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetFlag(VTFImageFlag flag, bool value);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetFlag")]
+		public static extern void ImageSetFlag(VTFImageFlag flag, bool value);
 
-		[DllImport("VTFLib.dll")]
-		public static extern float vlImageGetBumpmapScale();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetBumpmapScale")]
+		public static extern float ImageGetBumpmapScale();
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetBumpmapScale(float bumpmapScale);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetBumpmapScale")]
+		public static extern void ImageSetBumpmapScale(float bumpmapScale);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageGetReflectivity(ref float x, ref float y, ref float z);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetReflectivity")]
+		public static extern void ImageGetReflectivity(ref float x, ref float y, ref float z);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetReflectivity(float x, float y, float z);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetReflectivity")]
+		public static extern void ImageSetReflectivity(float x, float y, float z);
 
-		[DllImport("VTFLib.dll")]
-		public static extern VTFImageFormat vlImageGetFormat();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFormat")]
+		public static extern VTFImageFormat ImageGetFormat();
 
-		[DllImport("VTFLib.dll")]
-		public static extern byte[] vlImageGetData(uint frame, uint face, uint slice, uint mipmapLevel);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetData")]
+		public static extern byte[] ImageGetData(uint frame, uint face, uint slice, uint mipmapLevel);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetData(uint frame, uint face, uint slice, uint mipmapLevel, byte[] data);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetData")]
+		public static extern void ImageSetData(uint frame, uint face, uint slice, uint mipmapLevel, byte[] data);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGetHasThumbnail();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetHasThumbnail")]
+		public static extern bool ImageGetHasThumbnail();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetThumbnailWidth();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetThumbnailWidth")]
+		public static extern uint ImageGetThumbnailWidth();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetThumbnailHeight();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetThumbnailHeight")]
+		public static extern uint ImageGetThumbnailHeight();
 
-		[DllImport("VTFLib.dll")]
-		public static extern VTFImageFormat vlImageGetThumbnailFormat();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetThumbnailFormat")]
+		public static extern VTFImageFormat ImageGetThumbnailFormat();
 
-		[DllImport("VTFLib.dll")]
-		public static extern byte[] vlImageGetThumbnailData();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetThumbnailData")]
+		public static extern byte[] ImageGetThumbnailData();
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageSetThumbnailData(byte[] data);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetThumbnailData")]
+		public static extern void ImageSetThumbnailData(byte[] data);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGetSupportsResources();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetSupportsResources")]
+		public static extern bool ImageGetSupportsResources();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetResourceCount();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetResourceCount")]
+		public static extern uint ImageGetResourceCount();
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageGetResourceType(uint index);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetResourceType")]
+		public static extern uint ImageGetResourceType(uint index);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGetHasResource(uint type);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetHasResource")]
+		public static extern bool ImageGetHasResource(uint type);
 
-		[DllImport("VTFLib.dll")]
-		public static extern byte[] vlImageGetResourceData(uint type, ref uint size);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetResourceData")]
+		public static extern byte[] ImageGetResourceData(uint type, ref uint size);
 
-		[DllImport("VTFLib.dll")]
-		public static extern byte[] vlImageSetResourceData(uint type, uint size, byte[] data);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageSetResourceData")]
+		public static extern byte[] ImageSetResourceData(uint type, uint size, byte[] data);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateMipmaps(uint face, uint frame, VTFMipmapFilter mipmapFilter, bool srgb);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateMipmaps")]
+		public static extern bool ImageGenerateMipmaps(uint face, uint frame, VTFMipmapFilter mipmapFilter, bool srgb);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateAllMipmaps(VTFMipmapFilter mipmapFilter, bool srgb);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateAllMipmaps")]
+		public static extern bool ImageGenerateAllMipmaps(VTFMipmapFilter mipmapFilter, bool srgb);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateThumbnail(bool srgb);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateThumbnail")]
+		public static extern bool ImageGenerateThumbnail(bool srgb);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateNormalMap(uint frame, VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateNormalMap")]
+		public static extern bool ImageGenerateNormalMap(uint frame, VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateAllNormalMaps(VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateAllNormalMaps")]
+		public static extern bool ImageGenerateAllNormalMaps(VTFKernelFilter kernelFilter, VTFHeightConversionMethod heightConversionMethod, VTFNormalAlphaResult normalAlphaResult);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGenerateSphereMap();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGenerateSphereMap")]
+		public static extern bool ImageGenerateSphereMap();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageComputeReflectivity();
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeReflectivity")]
+		public static extern bool ImageComputeReflectivity();
 
-		[DllImport("VTFLib.dll")]
-		public static extern ref SVTFImageFormatInfo vlImageGetFormatInfo(VTFImageFormat format);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetFormatInfo")]
+		public static extern ref SVTFImageFormatInfo ImageGetFormatInfo(VTFImageFormat format);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageGetImageFormatInfoEx(VTFImageFormat format, ref SVTFImageFormatInfo info);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageGetImageFormatInfoEx")]
+		public static extern bool ImageGetImageFormatInfoEx(VTFImageFormat format, ref SVTFImageFormatInfo info);
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageComputeImageSize(uint width, uint height, uint depth, uint mipmapCount, VTFImageFormat format);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeImageSize")]
+		public static extern uint ImageComputeImageSize(uint width, uint height, uint depth, uint mipmapCount, VTFImageFormat format);
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageComputeMipmapCount(uint width, uint height, uint depth);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeMipmapCount")]
+		public static extern uint ImageComputeMipmapCount(uint width, uint height, uint depth);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageComputeMipmapDimensions(uint width, uint height, uint depth, uint mipmapLevel, ref uint mipmapWidth, ref uint mipmapHeight, ref uint mipmapDepth);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeMipmapDimensions")]
+		public static extern void ImageComputeMipmapDimensions(uint width, uint height, uint depth, uint mipmapLevel, ref uint mipmapWidth, ref uint mipmapHeight, ref uint mipmapDepth);
 
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlImageComputeMipmapSize(uint width, uint height, uint depth, uint mipmapLevel, VTFImageFormat format);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeMipmapSize")]
+		public static extern uint ImageComputeMipmapSize(uint width, uint height, uint depth, uint mipmapLevel, VTFImageFormat format);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageConvertToRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageConvertToRGBA8888")]
+		public static extern bool ImageConvertToRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageConvertFromRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat destFormat);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageConvertFromRGBA8888")]
+		public static extern bool ImageConvertFromRGBA8888(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat destFormat);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageConvert(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat, VTFImageFormat destFormat);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageConvert")]
+		public static extern bool ImageConvert(byte[] source, byte[] dest, uint width, uint height, VTFImageFormat sourceFormat, VTFImageFormat destFormat);
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlImageResize(byte[] sourceRGBA8888, byte[] destRGBA8888, uint sourceWidth, uint sourceHeight, uint destWidth, uint destHeight, VTFMipmapFilter resizeFilter, bool srgb);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageResize")]
+		public static extern bool ImageResize(byte[] sourceRGBA8888, byte[] destRGBA8888, uint sourceWidth, uint sourceHeight, uint destWidth, uint destHeight, VTFMipmapFilter resizeFilter, bool srgb);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageCorrectImageGamma(byte[] imageRGBA8888, uint width, uint height, float gammaCorrection);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageCorrectImageGamma")]
+		public static extern void ImageCorrectImageGamma(byte[] imageRGBA8888, uint width, uint height, float gammaCorrection);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageComputeImageReflectivity(byte[] imageRGBA8888, uint width, uint height, ref float x, ref float y, ref float z);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageComputeImageReflectivity")]
+		public static extern void ImageComputeImageReflectivity(byte[] imageRGBA8888, uint width, uint height, ref float x, ref float y, ref float z);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageFlipImage(byte[] imageRGBA8888, uint width, uint height);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageFlipImage")]
+		public static extern void ImageFlipImage(byte[] imageRGBA8888, uint width, uint height);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlImageMirrorImage(byte[] imageRGBA8888, uint width, uint height);
+		[DllImport("VTFLib.dll", EntryPoint = "vlImageMirrorImage")]
+		public static extern void ImageMirrorImage(byte[] imageRGBA8888, uint width, uint height);
 	}
 }

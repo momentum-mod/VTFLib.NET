@@ -24,37 +24,37 @@ namespace VTFLib
 
 	public static class VTFAPI
 	{
-		[DllImport("VTFLib.dll")]
-		public static extern uint vlGetVersion();
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetVersion")]
+		public static extern uint GetVersion();
 
-		[DllImport("VTFLib.dll")]
-		public static extern string vlGetVersionString();
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetVersionString")]
+		public static extern string GetVersionString();
 
-		[DllImport("VTFLib.dll")]
-		public static extern string vlGetLastError();
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetLastError")]
+		public static extern string GetLastError();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlInitialize();
+		[DllImport("VTFLib.dll", EntryPoint = "vlInitialize")]
+		public static extern bool Initialize();
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlShutdown();
+		[DllImport("VTFLib.dll", EntryPoint = "vlShutdown")]
+		public static extern void Shutdown();
 
-		[DllImport("VTFLib.dll")]
-		public static extern bool vlGetBoolean(VTFLibOption option);
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetBoolean")]
+		public static extern bool GetBoolean(VTFLibOption option);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlSetBoolean(VTFLibOption option, bool value);
+		[DllImport("VTFLib.dll", EntryPoint = "vlSetBoolean")]
+		public static extern void SetBoolean(VTFLibOption option, bool value);
 
-		[DllImport("VTFLib.dll")]
-		public static extern int vlGetInteger(VTFLibOption option);
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetInteger")]
+		public static extern int GetInteger(VTFLibOption option);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlSetInteger(VTFLibOption option, int value);
+		[DllImport("VTFLib.dll", EntryPoint = "vlSetInteger")]
+		public static extern void SetInteger(VTFLibOption option, int value);
 
-		[DllImport("VTFLib.dll")]
-		public static extern float vlGetFloat(VTFLibOption option);
+		[DllImport("VTFLib.dll", EntryPoint = "vlGetFloat")]
+		public static extern float GetFloat(VTFLibOption option);
 
-		[DllImport("VTFLib.dll")]
-		public static extern void vlSetFloat(VTFLibOption option, float value);
+		[DllImport("VTFLib.dll", EntryPoint = "vlSetFloat")]
+		public static extern void SetFloat(VTFLibOption option, float value);
 	}
 }
