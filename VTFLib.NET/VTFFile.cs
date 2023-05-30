@@ -205,7 +205,7 @@ namespace VTFLib
 		public static extern VTFImageFormat ImageGetFormat();
 
 		[DllImport(dllName, EntryPoint = "vlImageGetData")]
-		public static extern byte[] ImageGetData(uint frame, uint face, uint slice, uint mipmapLevel);
+		public static extern IntPtr ImageGetData(uint frame, uint face, uint slice, uint mipmapLevel);
 
 		[DllImport(dllName, EntryPoint = "vlImageSetData")]
 		public static extern void ImageSetData(uint frame, uint face, uint slice, uint mipmapLevel, byte[] data);
@@ -223,7 +223,7 @@ namespace VTFLib
 		public static extern VTFImageFormat ImageGetThumbnailFormat();
 
 		[DllImport(dllName, EntryPoint = "vlImageGetThumbnailData")]
-		public static extern byte[] ImageGetThumbnailData();
+		public static extern IntPtr ImageGetThumbnailData();
 
 		[DllImport(dllName, EntryPoint = "vlImageSetThumbnailData")]
 		public static extern void ImageSetThumbnailData(byte[] data);
@@ -241,10 +241,10 @@ namespace VTFLib
 		public static extern bool ImageGetHasResource(uint type);
 
 		[DllImport(dllName, EntryPoint = "vlImageGetResourceData")]
-		public static extern byte[] ImageGetResourceData(uint type, ref uint size);
+		public static extern IntPtr ImageGetResourceData(uint type, ref uint size);
 
 		[DllImport(dllName, EntryPoint = "vlImageSetResourceData")]
-		public static extern byte[] ImageSetResourceData(uint type, uint size, byte[] data);
+		public static extern IntPtr ImageSetResourceData(uint type, uint size, byte[] data);
 
 		[DllImport(dllName, EntryPoint = "vlImageGenerateMipmaps")]
 		public static extern bool ImageGenerateMipmaps(uint face, uint frame, VTFMipmapFilter mipmapFilter, bool srgb);
