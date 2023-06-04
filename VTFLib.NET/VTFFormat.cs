@@ -74,6 +74,7 @@ namespace VTFLib
 	}
 
 	// VTF image header flags.
+	[Flags]
 	public enum VTFImageFlag : uint
 	{
 		TEXTUREFLAGS_POINTSAMPLE								= 0x00000001,

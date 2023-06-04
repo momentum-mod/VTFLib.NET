@@ -24,37 +24,43 @@ namespace VTFLib
 
 	public static class VTFAPI
 	{
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetVersion")]
+#if WINDOWS
+	const string dllName = "VTFLib.dll";
+#elif LINUX
+	const string dllName = "libvtflib.so";
+#endif
+
+		[DllImport(dllName, EntryPoint = "vlGetVersion")]
 		public static extern uint GetVersion();
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetVersionString")]
+		[DllImport(dllName, EntryPoint = "vlGetVersionString")]
 		public static extern string GetVersionString();
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetLastError")]
+		[DllImport(dllName, EntryPoint = "vlGetLastError")]
 		public static extern string GetLastError();
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlInitialize")]
+		[DllImport(dllName, EntryPoint = "vlInitialize")]
 		public static extern bool Initialize();
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlShutdown")]
+		[DllImport(dllName, EntryPoint = "vlShutdown")]
 		public static extern void Shutdown();
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetBoolean")]
+		[DllImport(dllName, EntryPoint = "vlGetBoolean")]
 		public static extern bool GetBoolean(VTFLibOption option);
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlSetBoolean")]
+		[DllImport(dllName, EntryPoint = "vlSetBoolean")]
 		public static extern void SetBoolean(VTFLibOption option, bool value);
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetInteger")]
+		[DllImport(dllName, EntryPoint = "vlGetInteger")]
 		public static extern int GetInteger(VTFLibOption option);
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlSetInteger")]
+		[DllImport(dllName, EntryPoint = "vlSetInteger")]
 		public static extern void SetInteger(VTFLibOption option, int value);
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlGetFloat")]
+		[DllImport(dllName, EntryPoint = "vlGetFloat")]
 		public static extern float GetFloat(VTFLibOption option);
 
-		[DllImport("VTFLib.dll", EntryPoint = "vlSetFloat")]
+		[DllImport(dllName, EntryPoint = "vlSetFloat")]
 		public static extern void SetFloat(VTFLibOption option, float value);
 	}
 }
